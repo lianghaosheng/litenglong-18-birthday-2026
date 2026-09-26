@@ -22,39 +22,29 @@
         }
         .dino-stage {
             position: relative; width: 700px; height: 400px;
+            transition: transform 0.5s ease;
         }
-
-        /* 完整恐龙身体 (CSS 绘制) */
         .dino-body {
             position: absolute; bottom: 80px; left: 0;
             width: 90px; height: 110px;
-            background: #4CAF50;
-            border-radius: 40px 40px 20px 20px;
+            background: #4CAF50; border-radius: 40px 40px 20px 20px;
             transition: all 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
             z-index: 5;
         }
-        /* 恐龙肚子 */
         .dino-body::before {
             content: ''; position: absolute; bottom: 10px; left: 15px;
-            width: 60px; height: 70px;
-            background: #A5D6A7; border-radius: 50%;
+            width: 60px; height: 70px; background: #A5D6A7; border-radius: 50%;
         }
-        /* 恐龙尾巴 */
         .dino-tail {
             position: absolute; bottom: 20px; left: -40px;
-            width: 60px; height: 20px;
-            background: #4CAF50; border-radius: 20px 0 0 20px;
-            transform-origin: right center;
-            transform: rotate(-20deg);
+            width: 60px; height: 20px; background: #4CAF50;
+            border-radius: 20px 0 0 20px; transform-origin: right center; transform: rotate(-20deg);
         }
-        /* 恐龙头部 */
         .dino-head {
             position: absolute; top: -45px; left: 15px;
-            width: 60px; height: 55px;
-            background: #4CAF50;
+            width: 60px; height: 55px; background: #4CAF50;
             border-radius: 50% 50% 40% 40%;
         }
-        /* 恐龙眼睛 */
         .dino-head::before {
             content: ''; position: absolute; top: 15px; right: 15px;
             width: 12px; height: 12px; background: #fff; border-radius: 50%;
@@ -64,277 +54,133 @@
             content: ''; position: absolute; top: 18px; right: 18px;
             width: 6px; height: 6px; background: #000; border-radius: 50%;
         }
-        /* 恐龙嘴巴 */
         .dino-mouth {
             position: absolute; top: 40px; left: 30px;
             width: 25px; height: 5px; background: #fff; border-radius: 5px;
         }
-        /* 恐龙腿 */
         .dino-leg {
             position: absolute; bottom: -15px;
-            width: 18px; height: 25px; background: #4CAF50;
-            border-radius: 0 0 10px 10px;
+            width: 18px; height: 25px; background: #4CAF50; border-radius: 0 0 10px 10px;
         }
         .dino-leg.left { left: 15px; }
         .dino-leg.right { right: 15px; }
-        /* 恐龙名字标签 */
         .dino-name {
-            position: absolute; top: -80px; left: 50%;
-            transform: translateX(-50%);
+            position: absolute; top: -80px; left: 50%; transform: translateX(-50%);
             font-size: 18px; font-weight: bold; color: #fff;
             background: #FF6B6B; padding: 4px 15px; border-radius: 20px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-            white-space: nowrap;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2); white-space: nowrap;
         }
-
-        /* 虚线弧线轨迹 */
         .arc-path {
-            position: absolute;
-            border: 3px dashed rgba(255,255,255,0.8);
-            border-radius: 50%;
-            border-bottom: none;
-            border-left: none;
-            border-right: none;
-            opacity: 0;
-            transition: opacity 0.5s ease;
+            position: absolute; border: 3px dashed rgba(255,255,255,0.8);
+            border-radius: 50%; border-bottom: none; border-left: none; border-right: none;
+            opacity: 0; transition: opacity 0.5s ease;
         }
         .arc-1 { width: 200px; height: 100px; bottom: 180px; left: 60px; }
         .arc-2 { width: 200px; height: 100px; bottom: 180px; left: 260px; }
         .arc-3 { width: 200px; height: 100px; bottom: 180px; left: 460px; }
-
-        /* 礼物盒（场景1） */
         .gift-small {
             position: absolute; bottom: 50px; right: 50px;
-            width: 90px; height: 90px;
-            background: #FFD700;
-            border-radius: 10px;
-            cursor: pointer;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            animation: bounce 0.8s infinite alternate;
-            display: none;
-            z-index: 6;
+            width: 90px; height: 90px; background: #FFD700; border-radius: 10px;
+            cursor: pointer; box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            animation: bounce 0.8s infinite alternate; display: none; z-index: 6;
         }
-        .gift-small::before {
-            content: ''; position: absolute; top: 0; left: 38px; width: 14px; height: 100%; background: #ff0000;
-        }
-        .gift-small::after {
-            content: ''; position: absolute; top: 38px; left: 0; width: 100%; height: 14px; background: #ff0000;
-        }
-        .arrow-hint {
-            position: absolute; bottom: 160px; right: 60px;
-            font-size: 45px; color: #fff; display: none;
-            animation: float 0.8s infinite alternate;
-            text-shadow: 0 0 10px rgba(0,0,0,0.3);
-        }
+        .gift-small::before { content: ''; position: absolute; top: 0; left: 38px; width: 14px; height: 100%; background: #ff0000; }
+        .gift-small::after { content: ''; position: absolute; top: 38px; left: 0; width: 100%; height: 14px; background: #ff0000; }
+        .arrow-hint { position: absolute; bottom: 160px; right: 60px; font-size: 45px; color: #fff; display: none; animation: float 0.8s infinite alternate; text-shadow: 0 0 10px rgba(0,0,0,0.3); }
         @keyframes bounce { from { transform: translateY(0); } to { transform: translateY(-15px); } }
         @keyframes float { from { transform: translateY(0); } to { transform: translateY(-12px); } }
 
         /* ================= 场景 2：答题 ================= */
-        #scene-quiz {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            display: none; flex-direction: column; justify-content: center; align-items: center;
-            z-index: 20; color: #fff;
-        }
-        .quiz-box {
-            background: rgba(255, 255, 255, 0.08);
-            padding: 50px 70px; border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            text-align: center; backdrop-filter: blur(15px);
-            max-width: 85%;
-            box-shadow: 0 0 40px rgba(255, 215, 0, 0.1);
-        }
+        #scene-quiz { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: none; flex-direction: column; justify-content: center; align-items: center; z-index: 20; color: #fff; }
+        .quiz-box { background: rgba(255, 255, 255, 0.08); padding: 50px 70px; border-radius: 24px; border: 1px solid rgba(255, 255, 255, 0.15); text-align: center; backdrop-filter: blur(15px); max-width: 85%; box-shadow: 0 0 40px rgba(255, 215, 0, 0.1); }
         .quiz-title { font-size: 26px; margin-bottom: 30px; color: #FFD700; letter-spacing: 2px; }
         .quiz-question { font-size: 30px; margin-bottom: 15px; }
         .quiz-hint { font-size: 16px; color: #aaa; margin-bottom: 30px; }
-        .quiz-input {
-            width: 350px; padding: 14px 24px; font-size: 20px;
-            border: 2px solid rgba(255, 215, 0, 0.5); border-radius: 30px;
-            background: transparent; color: #fff; outline: none;
-            text-align: center; transition: border-color 0.3s;
-        }
+        .quiz-input { width: 350px; padding: 14px 24px; font-size: 20px; border: 2px solid rgba(255, 215, 0, 0.5); border-radius: 30px; background: transparent; color: #fff; outline: none; text-align: center; transition: border-color 0.3s; }
         .quiz-input:focus { border-color: #FFD700; box-shadow: 0 0 20px rgba(255,215,0,0.3); }
-        .quiz-btn {
-            margin-top: 25px; padding: 14px 50px; font-size: 20px;
-            color: #050510; background: linear-gradient(135deg, #FFD700, #FFA500);
-            border: none; border-radius: 30px; cursor: pointer; font-weight: bold;
-            transition: all 0.3s; letter-spacing: 2px;
-        }
+        .quiz-btn { margin-top: 25px; padding: 14px 50px; font-size: 20px; color: #050510; background: linear-gradient(135deg, #FFD700, #FFA500); border: none; border-radius: 30px; cursor: pointer; font-weight: bold; transition: all 0.3s; letter-spacing: 2px; }
         .quiz-btn:hover { transform: scale(1.05); box-shadow: 0 0 25px rgba(255,215,0,0.6); }
         .shake { animation: shake 0.5s; border-color: #ff0000 !important; }
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            20% { transform: translateX(-12px); }
-            40% { transform: translateX(12px); }
-            60% { transform: translateX(-8px); }
-            80% { transform: translateX(8px); }
-        }
+        @keyframes shake { 0%, 100% { transform: translateX(0); } 20% { transform: translateX(-12px); } 40% { transform: translateX(12px); } 60% { transform: translateX(-8px); } 80% { transform: translateX(8px); } }
 
         /* ================= 场景 3：烟花 ================= */
-        #scene-fireworks {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            display: none; flex-direction: column; justify-content: center; align-items: center;
-            z-index: 30;
-        }
-        .congrats-text {
-            font-size: 55px; color: #FFD700; text-shadow: 0 0 30px #FFD700, 0 0 60px #FFA500;
-            opacity: 0; transition: opacity 1s ease; letter-spacing: 5px;
-        }
+        #scene-fireworks { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: none; flex-direction: column; justify-content: center; align-items: center; z-index: 30; }
+        .congrats-text { font-size: 55px; color: #FFD700; text-shadow: 0 0 30px #FFD700, 0 0 60px #FFA500; opacity: 0; transition: opacity 1s ease; letter-spacing: 5px; }
         canvas#fireworks-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
 
-        /* ================= 场景 4：带翅膀的礼物盒飞入 ================= */
-        #scene-gift-final {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            display: none; flex-direction: column; justify-content: center; align-items: center;
-            z-index: 40;
-        }
-        .gift-wrapper {
-            position: relative;
-            animation: flyInWithWings 3s forwards;
-            cursor: pointer;
-        }
-        @keyframes flyInWithWings {
-            0% { transform: translateX(1200px) translateY(-300px) scale(0.1); opacity: 0; }
-            30% { opacity: 1; }
-            100% { transform: translateX(0) translateY(0) scale(1); opacity: 1; }
-        }
-        /* 翅膀 */
-        .wing {
-            position: absolute; top: 20px;
-            width: 80px; height: 100px;
-            background: linear-gradient(135deg, #fff, #e0e0e0);
-            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-            box-shadow: 0 0 20px rgba(255,255,255,0.8);
-            animation: flap 0.4s infinite alternate;
-        }
+        /* ================= 场景 4：带翅膀的礼物盒 ================= */
+        #scene-gift-final { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: none; flex-direction: column; justify-content: center; align-items: center; z-index: 40; }
+        .gift-wrapper { position: relative; animation: flyInWithWings 3s forwards; cursor: pointer; }
+        @keyframes flyInWithWings { 0% { transform: translateX(1200px) translateY(-300px) scale(0.1); opacity: 0; } 30% { opacity: 1; } 100% { transform: translateX(0) translateY(0) scale(1); opacity: 1; } }
+        .wing { position: absolute; top: 20px; width: 80px; height: 100px; background: linear-gradient(135deg, #fff, #e0e0e0); border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; box-shadow: 0 0 20px rgba(255,255,255,0.8); animation: flap 0.4s infinite alternate; }
         .wing.left { left: -70px; transform-origin: right center; transform: rotate(-20deg); }
-        .wing.right { right: -70px; transform-origin: left center; transform: rotate(20deg); }
-        @keyframes flap {
-            from { transform: scaleY(1) rotate(-20deg); }
-            to { transform: scaleY(0.8) rotate(-30deg); }
-        }
-        .wing.right { animation-name: flapRight; }
-        @keyframes flapRight {
-            from { transform: scaleY(1) rotate(20deg); }
-            to { transform: scaleY(0.8) rotate(30deg); }
-        }
-        /* 立体礼物盒 */
-        .gift-fancy {
-            width: 160px; height: 160px;
-            background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FF8C00 100%);
-            border-radius: 16px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5), inset 0 -10px 20px rgba(0,0,0,0.2), inset 0 10px 20px rgba(255,255,255,0.3);
-            position: relative;
-            transform: perspective(500px) rotateX(5deg) rotateY(-5deg);
-        }
-        .gift-fancy::before {
-            content: ''; position: absolute; top: 0; left: 65px; width: 30px; height: 100%;
-            background: linear-gradient(to right, #fff, #f0f0f0);
-            box-shadow: 0 0 10px rgba(255,255,255,0.5);
-        }
-        .gift-fancy::after {
-            content: ''; position: absolute; top: 65px; left: 0; width: 100%; height: 30px;
-            background: linear-gradient(to bottom, #fff, #f0f0f0);
-            box-shadow: 0 0 10px rgba(255,255,255,0.5);
-        }
-        /* 蝴蝶结 */
-        .bow {
-            position: absolute; top: -30px; left: 50%; transform: translateX(-50%);
-            width: 80px; height: 40px;
-        }
-        .bow::before, .bow::after {
-            content: ''; position: absolute; top: 0;
-            width: 40px; height: 40px;
-            background: #ff0000; border-radius: 50% 50% 0 50%;
-        }
+        .wing.right { right: -70px; transform-origin: left center; transform: rotate(20deg); animation-name: flapRight; }
+        @keyframes flap { from { transform: scaleY(1) rotate(-20deg); } to { transform: scaleY(0.8) rotate(-30deg); } }
+        @keyframes flapRight { from { transform: scaleY(1) rotate(20deg); } to { transform: scaleY(0.8) rotate(30deg); } }
+        .gift-fancy { width: 160px; height: 160px; background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FF8C00 100%); border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.5), inset 0 -10px 20px rgba(0,0,0,0.2), inset 0 10px 20px rgba(255,255,255,0.3); position: relative; transform: perspective(500px) rotateX(5deg) rotateY(-5deg); }
+        .gift-fancy::before { content: ''; position: absolute; top: 0; left: 65px; width: 30px; height: 100%; background: linear-gradient(to right, #fff, #f0f0f0); box-shadow: 0 0 10px rgba(255,255,255,0.5); }
+        .gift-fancy::after { content: ''; position: absolute; top: 65px; left: 0; width: 100%; height: 30px; background: linear-gradient(to bottom, #fff, #f0f0f0); box-shadow: 0 0 10px rgba(255,255,255,0.5); }
+        .bow { position: absolute; top: -30px; left: 50%; transform: translateX(-50%); width: 80px; height: 40px; }
+        .bow::before, .bow::after { content: ''; position: absolute; top: 0; width: 40px; height: 40px; background: #ff0000; border-radius: 50% 50% 0 50%; }
         .bow::before { left: 0; transform: rotate(-30deg); }
         .bow::after { right: 0; transform: rotate(30deg) scaleX(-1); }
         .gift-hint { margin-top: 40px; font-size: 22px; color: #FFD700; display: none; letter-spacing: 3px; }
 
         /* ================= 场景 5：爆炸和蛋糕 ================= */
-        #scene-cake {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            display: none; flex-direction: column; justify-content: center; align-items: center;
-            z-index: 50;
-        }
-        .explode-text {
-            font-size: 80px; color: #FFD700; font-weight: bold;
-            text-shadow: 0 0 30px #FFD700, 0 0 60px #FFA500, 0 0 100px #FF8C00;
-            opacity: 0; transform: scale(0.1);
-            animation: explode 1s forwards;
-            letter-spacing: 10px;
-        }
-        @keyframes explode {
-            0% { opacity: 0; transform: scale(0.1); }
-            70% { opacity: 1; transform: scale(1.3); }
-            100% { opacity: 1; transform: scale(1); }
-        }
-        .cake-container {
-            position: relative; margin-top: 40px;
-            opacity: 0; animation: fadeIn 1.5s forwards 1s;
-        }
+        #scene-cake { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: none; flex-direction: column; justify-content: center; align-items: center; z-index: 50; }
+        .explode-text { font-size: 80px; color: #FFD700; font-weight: bold; text-shadow: 0 0 30px #FFD700, 0 0 60px #FFA500, 0 0 100px #FF8C00; opacity: 0; transform: scale(0.1); animation: explode 1s forwards; letter-spacing: 10px; }
+        @keyframes explode { 0% { opacity: 0; transform: scale(0.1); } 70% { opacity: 1; transform: scale(1.3); } 100% { opacity: 1; transform: scale(1); } }
+        .cake-container { position: relative; margin-top: 40px; opacity: 0; animation: fadeIn 1.5s forwards 1s; }
         @keyframes fadeIn { to { opacity: 1; } }
         .cake { font-size: 120px; }
-        /* 蛋糕上的信封 */
-        .envelope-on-cake {
-            position: absolute; top: -30px; left: 50%; transform: translateX(-50%);
-            font-size: 40px; cursor: pointer;
-            animation: envelopeBounce 1s infinite alternate;
-        }
-        @keyframes envelopeBounce {
-            from { transform: translateX(-50%) translateY(0); }
-            to { transform: translateX(-50%) translateY(-10px); }
-        }
-        .envelope-hint {
-            margin-top: 20px; font-size: 20px; color: #FFD700;
-            opacity: 0; animation: fadeIn 1.5s forwards 2s;
-            letter-spacing: 2px;
-        }
+        .envelope-on-cake { position: absolute; top: -30px; left: 50%; transform: translateX(-50%); font-size: 40px; cursor: pointer; animation: envelopeBounce 1s infinite alternate; }
+        @keyframes envelopeBounce { from { transform: translateX(-50%) translateY(0); } to { transform: translateX(-50%) translateY(-10px); } }
+        .envelope-hint { margin-top: 20px; font-size: 20px; color: #FFD700; opacity: 0; animation: fadeIn 1.5s forwards 2s; letter-spacing: 2px; }
 
         /* ================= 场景 6：信纸展开 ================= */
-        #scene-letter {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            display: none; justify-content: center; align-items: center;
-            z-index: 60; background: rgba(0, 0, 0, 0.85);
-            transition: opacity 1s ease;
-        }
-        /* 飘出来的信封 */
-        .flying-envelope {
-            position: absolute;
-            font-size: 80px;
-            animation: flyOut 1.5s forwards;
-            z-index: 61;
-        }
-        @keyframes flyOut {
-            0% { top: 60%; left: 50%; transform: translate(-50%, -50%) scale(0.5); opacity: 1; }
-            100% { top: 50%; left: 50%; transform: translate(-50%, -50%) scale(2); opacity: 0; }
-        }
-        /* 信纸 */
-        .letter-paper {
-            width: 85%; max-width: 650px; height: 85%; max-height: 750px;
-            background: #fffaf0; border-radius: 12px;
-            padding: 50px; overflow-y: auto;
-            box-shadow: 0 0 60px rgba(255, 215, 0, 0.3);
-            color: #333; line-height: 2.2; font-size: 17px;
-            transform: scale(0.1) rotateX(90deg);
-            animation: unfoldLetter 1.5s forwards 0.5s;
-            position: relative; z-index: 62;
-        }
-        @keyframes unfoldLetter {
-            0% { transform: scale(0.1) rotateX(90deg); opacity: 0; }
-            100% { transform: scale(1) rotateX(0deg); opacity: 1; }
-        }
+        #scene-letter { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: none; justify-content: center; align-items: center; z-index: 60; background: rgba(0, 0, 0, 0.85); transition: opacity 1s ease; }
+        .flying-envelope { position: absolute; font-size: 80px; animation: flyOut 1.5s forwards; z-index: 61; }
+        @keyframes flyOut { 0% { top: 60%; left: 50%; transform: translate(-50%, -50%) scale(0.5); opacity: 1; } 100% { top: 50%; left: 50%; transform: translate(-50%, -50%) scale(2); opacity: 0; } }
+        .letter-paper { width: 85%; max-width: 650px; height: 85%; max-height: 750px; background: #fffaf0; border-radius: 12px; padding: 50px; overflow-y: auto; box-shadow: 0 0 60px rgba(255, 215, 0, 0.3); color: #333; line-height: 2.2; font-size: 17px; transform: scale(0.1) rotateX(90deg); animation: unfoldLetter 1.5s forwards 0.5s; position: relative; z-index: 62; }
+        @keyframes unfoldLetter { 0% { transform: scale(0.1) rotateX(90deg); opacity: 0; } 100% { transform: scale(1) rotateX(0deg); opacity: 1; } }
         .letter-paper h2 { text-align: center; margin-bottom: 30px; font-size: 28px; color: #FF6B6B; letter-spacing: 5px; }
         .letter-paper .to { font-weight: bold; font-size: 22px; margin-bottom: 25px; color: #333; }
         .letter-paper .from { text-align: right; font-weight: bold; margin-top: 40px; font-size: 22px; color: #333; }
         .letter-paper p { text-indent: 2em; margin-bottom: 15px; text-align: justify; }
-        .close-btn {
-            display: block; margin: 30px auto 0; padding: 12px 40px;
-            background: linear-gradient(135deg, #FFD700, #FFA500);
-            color: #000; border: none; border-radius: 25px; cursor: pointer;
-            font-weight: bold; font-size: 18px; transition: all 0.3s;
-        }
+        .close-btn { display: block; margin: 30px auto 0; padding: 12px 40px; background: linear-gradient(135deg, #FFD700, #FFA500); color: #000; border: none; border-radius: 25px; cursor: pointer; font-weight: bold; font-size: 18px; transition: all 0.3s; }
         .close-btn:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(255,215,0,0.6); }
 
+        /* ================= 手机屏幕适配 ================= */
+        @media screen and (max-width: 768px) {
+            .dino-stage { transform: scale(0.55); transform-origin: center bottom; }
+            .dino-name { font-size: 14px; padding: 2px 10px; top: -70px; }
+            .arrow-hint { font-size: 30px; right: 30px; bottom: 120px; }
+            .quiz-box { padding: 30px 20px; width: 90%; }
+            .quiz-title { font-size: 20px; margin-bottom: 20px; }
+            .quiz-question { font-size: 22px; margin-bottom: 10px; }
+            .quiz-hint { font-size: 14px; margin-bottom: 20px; }
+            .quiz-input { width: 100%; font-size: 16px; padding: 10px 15px; }
+            .quiz-btn { padding: 10px 30px; font-size: 16px; }
+            .congrats-text { font-size: 30px; text-align: center; padding: 0 20px; letter-spacing: 2px; }
+            .gift-fancy { width: 100px; height: 100px; }
+            .gift-fancy::before { left: 40px; width: 20px; }
+            .gift-fancy::after { top: 40px; height: 20px; }
+            .wing { width: 50px; height: 70px; }
+            .wing.left { left: -45px; }
+            .wing.right { right: -45px; }
+            .bow { width: 60px; height: 30px; }
+            .bow::before, .bow::after { width: 30px; height: 30px; }
+            .gift-hint { font-size: 16px; }
+            .explode-text { font-size: 40px; text-align: center; letter-spacing: 5px; }
+            .cake { font-size: 80px; }
+            .envelope-on-cake { font-size: 30px; top: -20px; }
+            .envelope-hint { font-size: 16px; text-align: center; padding: 0 20px; }
+            .letter-paper { padding: 25px; width: 95%; height: 90%; font-size: 15px; line-height: 1.8; }
+            .letter-paper h2 { font-size: 22px; margin-bottom: 20px; }
+            .letter-paper .to { font-size: 18px; margin-bottom: 15px; }
+            .letter-paper .from { font-size: 18px; margin-top: 20px; }
+            .close-btn { padding: 10px 30px; font-size: 16px; }
+        }
     </style>
 </head>
 <body>
@@ -342,23 +188,16 @@
     <!-- 场景 1：小恐龙 -->
     <div id="scene-dino">
         <div class="dino-stage">
-            <!-- 弧线轨迹 -->
             <div class="arc-path arc-1" id="arc1"></div>
             <div class="arc-path arc-2" id="arc2"></div>
             <div class="arc-path arc-3" id="arc3"></div>
-            
-            <!-- 小恐龙 -->
             <div class="dino-body" id="dino">
-                <div class="dino-head">
-                    <div class="dino-mouth"></div>
-                </div>
+                <div class="dino-head"><div class="dino-mouth"></div></div>
                 <div class="dino-tail"></div>
                 <div class="dino-leg left"></div>
                 <div class="dino-leg right"></div>
                 <div class="dino-name">李腾龙</div>
             </div>
-            
-            <!-- 礼物盒 -->
             <div class="gift-small" id="giftSmall" onclick="startQuiz()"></div>
             <div class="arrow-hint" id="arrowHint">👇</div>
         </div>
@@ -387,9 +226,7 @@
         <div class="gift-wrapper" onclick="explodeGift()">
             <div class="wing left"></div>
             <div class="wing right"></div>
-            <div class="gift-fancy">
-                <div class="bow"></div>
-            </div>
+            <div class="gift-fancy"><div class="bow"></div></div>
         </div>
         <div class="gift-hint">点开它！</div>
     </div>
@@ -423,7 +260,6 @@
     </div>
 
     <script>
-        // ================= 全局变量 =================
         let currentQuestionIndex = 0;
         const questions = [
             { q: "双语校歌的第一句是什么？", hint: "提示：不算标点共八个字", answer: "现代的风双语的梦" },
@@ -431,7 +267,6 @@
             { q: "请说出给你这个网站的人平时对你的称呼？", hint: "提示：两个字", answer: "李哥" }
         ];
 
-        // ================= 场景 1：小恐龙跳跃 =================
         window.onload = function() {
             const dino = document.getElementById('dino');
             const giftSmall = document.getElementById('giftSmall');
@@ -440,94 +275,35 @@
             const arc2 = document.getElementById('arc2');
             const arc3 = document.getElementById('arc3');
 
-            // 第一跳
-            setTimeout(() => {
-                arc1.style.opacity = '1';
-                dino.style.left = '200px';
-                dino.style.bottom = '200px';
-                dino.style.transform = 'rotate(-15deg)';
-            }, 300);
-            setTimeout(() => {
-                dino.style.bottom = '80px';
-                dino.style.transform = 'rotate(0deg)';
-            }, 1500);
-
-            // 第二跳
-            setTimeout(() => {
-                arc2.style.opacity = '1';
-                dino.style.left = '400px';
-                dino.style.bottom = '200px';
-                dino.style.transform = 'rotate(-15deg)';
-            }, 2000);
-            setTimeout(() => {
-                dino.style.bottom = '80px';
-                dino.style.transform = 'rotate(0deg)';
-            }, 3200);
-
-            // 第三跳
-            setTimeout(() => {
-                arc3.style.opacity = '1';
-                dino.style.left = '580px';
-                dino.style.bottom = '200px';
-                dino.style.transform = 'rotate(-15deg)';
-            }, 3700);
-            setTimeout(() => {
-                dino.style.bottom = '80px';
-                dino.style.transform = 'rotate(0deg)';
-                // 显示礼物盒和箭头
-                giftSmall.style.display = 'block';
-                arrowHint.style.display = 'block';
-            }, 4900);
+            setTimeout(() => { arc1.style.opacity = '1'; dino.style.left = '200px'; dino.style.bottom = '200px'; dino.style.transform = 'rotate(-15deg)'; }, 300);
+            setTimeout(() => { dino.style.bottom = '80px'; dino.style.transform = 'rotate(0deg)'; }, 1500);
+            setTimeout(() => { arc2.style.opacity = '1'; dino.style.left = '400px'; dino.style.bottom = '200px'; dino.style.transform = 'rotate(-15deg)'; }, 2000);
+            setTimeout(() => { dino.style.bottom = '80px'; dino.style.transform = 'rotate(0deg)'; }, 3200);
+            setTimeout(() => { arc3.style.opacity = '1'; dino.style.left = '580px'; dino.style.bottom = '200px'; dino.style.transform = 'rotate(-15deg)'; }, 3700);
+            setTimeout(() => { dino.style.bottom = '80px'; dino.style.transform = 'rotate(0deg)'; giftSmall.style.display = 'block'; arrowHint.style.display = 'block'; }, 4900);
         };
 
-        // ================= 场景 2：答题 =================
         function startQuiz() {
             document.getElementById('scene-dino').style.opacity = '0';
-            setTimeout(() => {
-                document.getElementById('scene-dino').style.display = 'none';
-                document.getElementById('scene-quiz').style.display = 'flex';
-                document.body.style.backgroundColor = '#050510';
-                renderQuestion();
-            }, 1000);
+            setTimeout(() => { document.getElementById('scene-dino').style.display = 'none'; document.getElementById('scene-quiz').style.display = 'flex'; document.body.style.backgroundColor = '#050510'; renderQuestion(); }, 1000);
         }
-
         function renderQuestion() {
-            if (currentQuestionIndex >= questions.length) {
-                startFireworks();
-                return;
-            }
+            if (currentQuestionIndex >= questions.length) { startFireworks(); return; }
             const q = questions[currentQuestionIndex];
             document.getElementById('questionText').innerText = `第 ${currentQuestionIndex + 1} 题：${q.q}`;
             document.getElementById('hintText').innerText = q.hint;
             document.getElementById('answerInput').value = '';
             document.getElementById('answerInput').focus();
         }
-
         function checkAnswer() {
             const input = document.getElementById('answerInput');
             const userAnswer = input.value.trim().replace(/[\s,，。.、]/g, '');
             const correctAnswer = questions[currentQuestionIndex].answer;
-
-            if (userAnswer === correctAnswer) {
-                currentQuestionIndex++;
-                renderQuestion();
-            } else {
-                input.classList.add('shake');
-                input.value = '';
-                setTimeout(() => {
-                    input.classList.remove('shake');
-                }, 500);
-            }
+            if (userAnswer === correctAnswer) { currentQuestionIndex++; renderQuestion(); }
+            else { input.classList.add('shake'); input.value = ''; setTimeout(() => { input.classList.remove('shake'); }, 500); }
         }
+        document.getElementById('answerInput').addEventListener('keypress', function(e) { if (e.key === 'Enter') { checkAnswer(); } });
 
-        // 回车键提交
-        document.getElementById('answerInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                checkAnswer();
-            }
-        });
-
-        // ================= 场景 3：烟花 =================
         function startFireworks() {
             document.getElementById('scene-quiz').style.opacity = '0';
             setTimeout(() => {
@@ -535,108 +311,46 @@
                 document.getElementById('scene-fireworks').style.display = 'flex';
                 document.getElementById('congratsText').style.opacity = '1';
                 runFireworks();
-                
-                setTimeout(() => {
-                    startFinalGift();
-                }, 4000);
+                setTimeout(() => { startFinalGift(); }, 4000);
             }, 1000);
         }
-
         function runFireworks() {
             const canvas = document.getElementById('fireworks-canvas');
             const ctx = canvas.getContext('2d');
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            
+            canvas.width = window.innerWidth; canvas.height = window.innerHeight;
             let particles = [];
             const colors = ['#FFD700', '#FF6B6B', '#4ECDC4', '#FFE66D', '#FF9F1C'];
-
             function createParticle(x, y) {
                 const color = colors[Math.floor(Math.random() * colors.length)];
-                for (let i = 0; i < 40; i++) {
-                    particles.push({
-                        x: x, y: y,
-                        vx: (Math.random() - 0.5) * 12,
-                        vy: (Math.random() - 0.5) * 12,
-                        life: 1,
-                        color: color
-                    });
-                }
+                for (let i = 0; i < 40; i++) { particles.push({ x: x, y: y, vx: (Math.random() - 0.5) * 12, vy: (Math.random() - 0.5) * 12, life: 1, color: color }); }
             }
-
             function update() {
-                ctx.fillStyle = 'rgba(5, 5, 16, 0.15)';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-                
+                ctx.fillStyle = 'rgba(5, 5, 16, 0.15)'; ctx.fillRect(0, 0, canvas.width, canvas.height);
                 for (let i = particles.length - 1; i >= 0; i--) {
-                    const p = particles[i];
-                    p.x += p.vx;
-                    p.y += p.vy;
-                    p.vy += 0.12;
-                    p.life -= 0.015;
-                    
-                    if (p.life <= 0) {
-                        particles.splice(i, 1);
-                        continue;
-                    }
-                    
-                    ctx.beginPath();
-                    ctx.arc(p.x, p.y, 2.5, 0, Math.PI * 2);
-                    ctx.fillStyle = p.color;
-                    ctx.globalAlpha = p.life;
-                    ctx.fill();
+                    const p = particles[i]; p.x += p.vx; p.y += p.vy; p.vy += 0.12; p.life -= 0.015;
+                    if (p.life <= 0) { particles.splice(i, 1); continue; }
+                    ctx.beginPath(); ctx.arc(p.x, p.y, 2.5, 0, Math.PI * 2); ctx.fillStyle = p.color; ctx.globalAlpha = p.life; ctx.fill();
                 }
                 requestAnimationFrame(update);
             }
-
-            setInterval(() => {
-                if (Math.random() > 0.2) {
-                    createParticle(Math.random() * canvas.width, Math.random() * canvas.height * 0.6);
-                }
-            }, 250);
-
+            setInterval(() => { if (Math.random() > 0.2) { createParticle(Math.random() * canvas.width, Math.random() * canvas.height * 0.6); } }, 250);
             update();
         }
-
-        // ================= 场景 4：带翅膀的礼物盒 =================
         function startFinalGift() {
             document.getElementById('scene-fireworks').style.opacity = '0';
-            setTimeout(() => {
-                document.getElementById('scene-fireworks').style.display = 'none';
-                document.getElementById('scene-gift-final').style.display = 'flex';
-                document.querySelector('.gift-hint').style.display = 'block';
-            }, 1000);
+            setTimeout(() => { document.getElementById('scene-fireworks').style.display = 'none'; document.getElementById('scene-gift-final').style.display = 'flex'; document.querySelector('.gift-hint').style.display = 'block'; }, 1000);
         }
-
-        // ================= 场景 5：爆炸和蛋糕 =================
         function explodeGift() {
             document.getElementById('scene-gift-final').style.opacity = '0';
-            setTimeout(() => {
-                document.getElementById('scene-gift-final').style.display = 'none';
-                document.getElementById('scene-cake').style.display = 'flex';
-                document.getElementById('explodeText').style.animation = 'explode 1s forwards';
-            }, 1000);
+            setTimeout(() => { document.getElementById('scene-gift-final').style.display = 'none'; document.getElementById('scene-cake').style.display = 'flex'; document.getElementById('explodeText').style.animation = 'explode 1s forwards'; }, 1000);
         }
-
-        // ================= 场景 6：信纸 =================
         function openLetter() {
             document.getElementById('scene-cake').style.opacity = '0';
-            setTimeout(() => {
-                document.getElementById('scene-cake').style.display = 'none';
-                document.getElementById('scene-letter').style.display = 'flex';
-                // 信纸展开动画结束后，隐藏飞出来的信封
-                setTimeout(() => {
-                    document.getElementById('flyingEnvelope').style.display = 'none';
-                }, 2000);
-            }, 1000);
+            setTimeout(() => { document.getElementById('scene-cake').style.display = 'none'; document.getElementById('scene-letter').style.display = 'flex'; setTimeout(() => { document.getElementById('flyingEnvelope').style.display = 'none'; }, 2000); }, 1000);
         }
-
         function closeLetter() {
             document.getElementById('scene-letter').style.opacity = '0';
-            setTimeout(() => {
-                document.getElementById('scene-letter').style.display = 'none';
-                location.reload(); 
-            }, 1000);
+            setTimeout(() => { document.getElementById('scene-letter').style.display = 'none'; location.reload(); }, 1000);
         }
     </script>
 </body>
